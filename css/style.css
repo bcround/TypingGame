@@ -1,0 +1,52 @@
+@import url(./reset.css);
+
+.a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  clip-path: polygon(0 0, 0 0, 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.container {
+   width: 100vw;
+   height: 50vh;
+   background-color: #008000;
+   padding: 30px;
+   box-sizing: border-box;
+}
+
+.game {
+  background-color: #90EE90;
+  text-align: center;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.time-left {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.word {
+  font-size: 50px;
+}
+
+.input-word {
+  width: 200px;
+  height: 20px;
+  border: 1px solid #ccc;
+}
+
+.current-score {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.final-score {
+  margin-top: 30px;
+  font-size: 20px;
+  display: none;
+}
