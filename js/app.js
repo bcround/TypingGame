@@ -1,8 +1,5 @@
 // data
-const words = ["vulnerable", "invulnerable", "mandate",
-"profitable", "nerve", "substantive", "candid", "candor", 
-"dormant", "guilty", "equivocal", "gloom", "evident", 
-"budget","convince", "assume", "reputation"];
+let words = [];
 let timeLeftCount;
 
 // DOM
@@ -11,6 +8,7 @@ const $word = document.querySelector('.word');
 const $inputWord = document.querySelector('.input-word');
 const $currentScore = document.querySelector('.current-score');
 const $finalScore = document.querySelector('.final-score');
+const $replayBtn = document.querySelector('.replayBtn');
 
 const shuffleWords = () => {
   const randomPick = Math.floor(Math.random() * words.length);
@@ -44,18 +42,21 @@ const finishGame = () => {
   $timeLeft.textContent = 0;
 };
 
-$inputWord.addEventListener('keyup', e => {
-  const word = e.target.value;
-
-  if (e.key !== 'Enter') return;
-  compareWords(word);
-  e.target.value = '';
-});
+const refreshGame = () => {
+  words = ["vulnerable", "invulnerable", "mandate",
+  "profitable", "nerve", "substantive", "candid", "candor", 
+  "dormant", "guilty", "equivocal", "gloom", "evident", 
+  "budget","convince", "assume", "reputation"];
+  clearInterval(timeLeftCount);
+  shuffleWords();
+  $inputWord.removeAttribute('disabled');
+  $finalScore.style.display = 'none';
+  $currentScore.lastElementChild.textContent = 0;
+  $timeLeft.textContent = 10;
+};
 
 const init = () => {
-  shuffleWords();
-  $timeLeft.textContent = 10;
-
+  refreshGame();
   timeLeftCount = setInterval(() => {
     --$timeLeft.textContent;
     if ($timeLeft.textContent === '0') {
@@ -66,3 +67,13 @@ const init = () => {
 };
 
 document.addEventListener('DOMContentLoaded', init);
+
+$inputWord.addEventListener('keyup', e => {
+  const word = e.target.value;
+
+  if (e.key !== 'Enter') return;
+  compareWords(word);
+  e.target.value = '';
+});
+
+$replayBtn.addEventListener('click', init);

@@ -23,6 +23,7 @@
   height: 100%;
   padding: 20px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .time-left {
@@ -49,4 +50,18 @@
   margin-top: 30px;
   font-size: 20px;
   display: none;
+}
+
+.replayBtn {
+  position: absolute;
+  bottom: 30px;
+  left: 45%;
+  border: 1px solid #fff;
+  background-color: #4bb543;
+  color: #fff;
+}
+
+.replayBtn:hover {
+  background-color: #fff;
+  color: #4bb543;
 }
